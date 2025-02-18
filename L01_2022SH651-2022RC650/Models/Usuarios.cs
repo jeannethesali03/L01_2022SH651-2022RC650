@@ -1,7 +1,10 @@
-﻿namespace L01_2022SH651_2022RC650.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace L01_2022SH651_2022RC650.Models
 {
     public class Usuarios
     {
+        [Key]
         public int usuarioId { get; set; }
         public int rolId { get; set; }
         public string nombreUsuario { get; set; }
