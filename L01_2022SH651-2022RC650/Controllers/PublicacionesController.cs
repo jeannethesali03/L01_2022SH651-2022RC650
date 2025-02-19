@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using L01_2022SH651_2022RC650.Models;
 using Microsoft.EntityFrameworkCore;
 
+//Eyleen Jeannethe Salinas Hernández
+//Wilber Anibal Rivas Carranza
 
 namespace L01_2022SH651_2022RC650.Controllers
 {
@@ -110,6 +112,34 @@ namespace L01_2022SH651_2022RC650.Controllers
             }
             return Ok(publicacion);
         }
+
+
+        //TopN
+        [HttpGet]
+        [Route("TopPublicaciones/{topN}")]
+        public IActionResult TopPublicaciones(int topN)
+        {
+            var topPublicaciones = _blogContexto.Publicaciones
+                .Select(publicaciones => new
+                {
+                    publicaciones.publicacionId,
+                    publicaciones.titulo,
+                    cantidadComentarios = _blogContexto.Comentarios
+                        .Count(comentarios => comentarios.publicacionId == publicaciones.publicacionId)
+                })
+                .OrderByDescending(publicaciones => publicaciones.cantidadComentarios)
+                .Take(topN)
+                .ToList();
+
+            if (!topPublicaciones.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(topPublicaciones);
+        }
+
+
 
     }
 }

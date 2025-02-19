@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
+//Eyleen Jeannethe Salinas Hernández
+//Wilber Anibal Rivas Carranza
+
 namespace L01_2022SH651_2022RC650.Controllers
 {
     [Route("api/[controller]")]
@@ -110,7 +113,7 @@ namespace L01_2022SH651_2022RC650.Controllers
             return Ok(UsuarioPorNombre);
         }
 
-
+       
         [HttpGet]
         [Route("GetByRol")]
         public IActionResult GetByRol(string rol)
