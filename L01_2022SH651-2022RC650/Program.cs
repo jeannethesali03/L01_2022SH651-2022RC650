@@ -10,7 +10,7 @@ builder.Services.AddControllers();
 //Inyeccion por dependencia de String de conexion al contexto
 builder.Services.AddDbContext<BlogContext>(options =>
         options.UseSqlServer(
-            builder.Configuration.GetConnectionString("blogDbConnecion")
+            builder.Configuration.GetConnectionString("blogDbConnection")
             )
  );
 
